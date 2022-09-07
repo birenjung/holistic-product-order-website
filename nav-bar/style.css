@@ -19,22 +19,20 @@ div .nav-bar{
     align-self: center;
 }
 
-.menu{    
-    align-self: center;    
+.nav-links{
+    display: flex;    
+    justify-content: space-around;
+    width: 45%;
+    align-items: center;
 }
 
-.menu ul{
-    list-style-type: none;    
-}
-
-.menu ul li{
-    display: inline;
-}
-    
-
-.menu ul li a{
+.nav-links a{
+    color:teal;
     text-decoration: none;
-    margin-right: 15px;
-    letter-spacing: 1px;
-    font-weight: bold;
+    letter-spacing: 2px;
+
+}
+
+.nav-links li{
+    list-style: none;
 }

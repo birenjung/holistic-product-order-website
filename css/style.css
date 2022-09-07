@@ -42,12 +42,17 @@
     color: white;
 }
 
+h2{
+    color: #001F2B;
+    font-size: 2.5rem;
+}
+
 
 /* header-links */
 
 .header{
     background-color: black; 
-    padding: 1% ;
+    padding: 0.5% ;
     letter-spacing: 1px;
 }
 
@@ -76,6 +81,7 @@ div .navbar{
     display: flex;
     justify-content: space-around;
     background-color: #001F2B;
+    height: 80px;
 }
 .nav-links{
     list-style: none;
@@ -94,6 +100,10 @@ div .navbar{
 }
 
 /* social and footer */
+.social-links{
+    background-color: #001F2B;
+    padding: 2%;
+}
 .social-links ul{
     list-style-type: none;
 }
@@ -106,7 +116,7 @@ div .navbar{
 /* search section */
 .search{
     background-image: url(../img/bg.jpg);    
-    padding: 7% 0;
+    padding: 8% 0;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -118,23 +128,25 @@ div .navbar{
     font-size: 1rem;
     border: none;
     border-radius: 5px;
+    letter-spacing: 1.5px;
 }
 
 /* Categories */
 .categories{
-    padding: 4% 0;
-    background-color: #dfe6e9;
-    margin: 0 auto;
+    margin-top: 3%;
+    padding: 2%;
+}
+.categories-flex{
+    display: flex;   
+    margin-top: 4%;   
 }
 .box4{
-    width: 36%;
-    float: left;
-    margin: 5%;
-    padding: 1%;    
+    margin-right: 10px;
     color: white;    
 }
 .box4 img{
-    border-radius: 10px;
+    border-radius: 7px;
+    width: 100%;
        
 }
 .float-container{
@@ -153,4 +165,11 @@ div .navbar{
     opacity: 0.7;
     letter-spacing: 1px;
     
+}
+
+/* footer */
+.footer{
+    background-color: #001F2B;
+    color: white;
+    padding: 2%;
 }
