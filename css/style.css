@@ -12,7 +12,7 @@
 
 .container{
     width: 100%;
-    margin: 0 auto;     
+    margin: 0 auto;         
 }
 
 .clearfix{    
@@ -35,6 +35,7 @@
     border: none;
     border-radius: 5px;
     opacity: 0.7;
+    cursor: pointer;
 }
 
 .btn-primary{
@@ -43,15 +44,23 @@
 }
 
 h2{
-    color: #001F2B;
+    color: #2c3e50;
     font-size: 2.5rem;
 }
 
+.btn-secondary{
+    background-color: #001F2B;
+    padding: 3%;
+    letter-spacing: 1px;
+}
+.btn-secondary:hover{
+    background-color:black;
+}
 
 /* header-links */
 
 .header{
-    background-color: black; 
+    background-color: #2c3e50; 
     padding: 0.5% ;
     letter-spacing: 1px;
 }
@@ -68,7 +77,7 @@ h2{
 
 .header-links ul li a{
     text-decoration: none;
-    color: white;
+    color: beige;
     font-size: 12px;
 }
 
@@ -80,7 +89,7 @@ h2{
 div .navbar{
     display: flex;
     justify-content: space-around;
-    background-color: #001F2B;
+    background-color: white;
     height: 80px;
 }
 .nav-links{
@@ -96,12 +105,15 @@ div .navbar{
 }
 .nav-links li a{
     text-decoration: none; 
-    color: white;
+    color: #34495e;
+}
+.nav-links li a:hover{
+    color: #001F2B;
 }
 
 /* social and footer */
 .social-links{
-    background-color: #001F2B;
+    background-color: #2c3e50;
     padding: 2%;
 }
 .social-links ul{
@@ -133,17 +145,24 @@ div .navbar{
 
 /* Categories */
 .categories{
-    margin-top: 3%;
-    padding: 2%;
+    margin-top: 4%;
+    /* padding: 2 */
+    /* width: 90%; */
+    border-bottom: 1px solid #7f8c8d;
 }
 .categories-flex{
     display: flex;   
-    margin-top: 4%;   
+    margin-top: 4%; 
+    justify-content: space-around; 
+    align-items: center; 
+    padding: 3%;    
 }
-.box4{
-    margin-right: 10px;
-    color: white;    
+.category-items{
+    align-self: center;
+    /* margin-right: 15px; */
+    width: 30%;
 }
+
 .box4 img{
     border-radius: 7px;
     width: 100%;
@@ -156,6 +175,7 @@ div .navbar{
     position: absolute;
     bottom: 40px;
     left: 30%;
+    color: white; 
 
 }
 .text-bg{
@@ -163,13 +183,107 @@ div .navbar{
     padding: 4%;
     border-radius: 3px;
     opacity: 0.7;
-    letter-spacing: 1px;
-    
+    letter-spacing: 1px;    
 }
 
 /* footer */
 .footer{
-    background-color: #001F2B;
+    background-color: #2c3e50;
     color: white;
     padding: 2%;
+}
+
+/* Featured products */
+.featured-products{
+    margin-top: 4%;
+}
+
+.product-flex{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 4%;
+    
+}
+
+.product-items img{
+    width: 100%; 
+    align-items: center;   
+   
+}
+
+.product-items{    
+    margin: 1%;
+    padding: 1%;
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 20%;
+}
+
+.product-items a{
+    text-decoration: none;
+    text-align: center;    
+}
+
+.cart a{
+    color: white;
+}
+
+.product-name{
+    color: #c0392b;
+    padding: 1%;
+}
+.price{
+    color: black;
+    padding: 1%;
+}
+
+.see-all a{
+    text-decoration: none;
+    color: #34495e;
+    font-size: 1.3rem;
+}
+.see-all a:hover{
+    color:#001F2B
+}
+
+/* Services */
+
+.services{
+    margin-top: 4%;
+    border-bottom: 1px solid #7f8c8d;
+}
+
+.services-flex{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    /* border: 1px solid black; */
+    padding: 3%;
+}
+
+.service-items{
+    /* border: 1px solid black; */
+    width: 30%;
+    padding: 1%;
+}
+.service-items img{
+    width: 100%;
+}
+.service-title{
+    padding: 1%;
+    color: #c0392b;
+    margin: 3%;    
+
+}
+.book-now{
+    text-align: center;
+    margin: 2%;
+}
+.book-now a{
+    text-decoration: none;
+    color: white;
 }
