@@ -359,16 +359,13 @@ nav{
     .burger{
         display: block;   
     }
-    nav{
-        position: relative;
-        /* overflow: visible; */
-    }
+    
     .nav-links{
-        position: absolute;
+        position: fixed;
         right: 0px;
         height: 80vh;
-        top: 90px;
-        background-color: black;
+        top: 120px;
+        background-color: #ced6e0;
         opacity: 0.9;
         display: flex;
         flex-direction: column;
@@ -378,12 +375,14 @@ nav{
         transform: translateX(100%);
         transition: transform 0.5s ease-in;        
     }
-   .nav-links li {
-    /* opacity: 0; */
-   }
+   
    .nav-active{
     transform: translateX(0%);
    } 
+
+   .logo{
+    width: 50%;
+   }
 
 
 }
