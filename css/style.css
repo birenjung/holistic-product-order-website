@@ -14,12 +14,12 @@
     overflow-x: hidden;    
 } */
 
-#content{
+/* #content{
     /* background-color: #001F2B; */   
     /* overflow: hidden; */
     /* margin: 0 auto;     */
-    overflow-x: hidden;
-}
+    /* overflow-x: hidden;
+} */ 
 .clearfix{    
     clear: both;
     float: none;
@@ -121,10 +121,6 @@ nav{
     align-items: center; 
     width: 60%;
     /* background-color: #009BD6; */
-}
-.nav-links li{    
-    /* background-color: #c0392b; */
-
 }
 .nav-links li a{
     text-decoration: none; 
@@ -326,6 +322,11 @@ nav{
 
 /* For Mobile */
 @media only screen and (max-width:900px){
+
+    body{
+        /* background-color: #001F2B; */
+        overflow-x: hidden;
+    }
    
     .service-items{
         width: 45%;
