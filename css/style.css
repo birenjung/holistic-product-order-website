@@ -10,20 +10,7 @@
     box-sizing: border-box;
 }
 
-/* #content{
-    overflow-x: hidden;    
-} */
 
-/* #content{
-    /* background-color: #001F2B; */   
-    /* overflow: hidden; */
-    /* margin: 0 auto;     */
-    /* overflow-x: hidden;
-} */ 
-
-.body{
-    /* overflow: hidden; */
-}
 .clearfix{    
     clear: both;
     float: none;
@@ -371,7 +358,7 @@ nav{
         flex-direction: column;
         align-items: center;
         justify-content: space-evenly;
-        width: 50%;
+        width: 60%;
         transform: translateX(100%);
         transition: transform 0.5s ease-in;        
     }
@@ -434,5 +421,8 @@ nav{
    }
    .float-text{
     left: 20%;
+   }
+   nav{
+    padding: 3%;
    }
 }
