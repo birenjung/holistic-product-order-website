@@ -10,9 +10,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
 </head>
-<body>
-        <section class="header">
-            <div class="container">   
+<body id="content">
+
+        <section class="header">              
                 <div class="header-links text-right">
                     <ul>
                         <li>
@@ -28,23 +28,18 @@
                             <a href="#">Shopping Cart</a>
                         </li>
                     </ul>                
-                </div>                
-            </div>
-            <div class="clearfix"></div> 
-                     
-
+                </div>        
         </section>
         <!-- header link section ends-->
 
         <section class="nav-bar">
-            <div class="container">
-                <div class="navbar">
+            <!-- <div class="container"> -->
+                <nav>
                     <a href="">
                         <div class="logo">
-                            <h1>AMP Holistic Enterprise</h1>
+                            <img src="img/logo.amp.png" alt="">
                         </div>
-                    </a>
-                    
+                    </a>                    
                        <ul class="nav-links">
                             <li>
                                 <a href="#">Home</a>
@@ -62,9 +57,16 @@
                                 <a href="#">Contact</a>
                             </li>
                         </ul>
+
+                        <div class="burger">
+                            <div class="line1"></div>
+                            <div class="line1"></div>
+                            <div class="line1"></div>
+                        </div>
                     
-                </div>                
-            </div>
+                    </nav>
+                           
+            <!-- </div> -->
             
 
         
@@ -74,15 +76,25 @@
 
         <!-- Search section starts -->
         <section class="search text-center">
-            <div class="container">
+            <!-- <div class="container"> -->
                 <form action="#" method="POST" class="form1">
                     <input type="search" name="search" placeholder="Search For Therapy and Products.." required>
                     <input type="submit" name="submit" value="Search" class="btn btn-primary">    
                 </form>
-            </div>
+            <!-- </div> -->
 
         </section>
         <!-- Search section ends -->
+
+        <p id="demo" class="text-center"></p>
+
+<script>
+var w = window.innerWidth;
+var h = window.innerHeight;
+
+var x = document.getElementById("demo");
+x.innerHTML = "Browser width: " + w + ", height: " + h + ".";
+</script>
 
         <!-- Services section starts -->
         <section class="services">
@@ -154,31 +166,25 @@
         <section class="categories">
             <h2 class="text-center">Categories</h2> 
             <div class="categories-flex">
-                <div class="category-items">
-                    <a href="#">
-                        <div class="box4 float-container">
+                <div class="category-items float-container">
+                    <a href="#">                        
                             <img src="img/neutraceutical.png">
-                            <h3 class="float-text text-bg">Nutraceutical</h3>
-                        </div>
+                            <h3 class="float-text text-bg">Nutraceutical</h3>                       
                     </a>
                 </div>
-                <div class="category-items">
-                    <a href="#">
-                        <div class="box4 float-container">
-                            <img src="img/herbs-black-coffee.jpeg">
-                            <h3 class="float-text text-bg">Beverages</h3>
-                        </div>
+                <div class="category-items float-container">
+                    <a href="#">                        
+                            <img src="img/neutraceutical.png">
+                            <h3 class="float-text text-bg">Beverages</h3>                       
                     </a>
                 </div>
-        
-                <div class="category-items">
-                    <a href="#">
-                        <div class="box4 float-container">
-                            <img src="img/herbs-soap.png">
-                            <h3 class="float-text text-bg">Personal Care</h3>
-                        </div>
+                <div class="category-items float-container">
+                    <a href="#">                        
+                            <img src="img/neutraceutical.png">
+                            <h3 class="float-text text-bg">Personal Care</h3>                       
                     </a>
-                </div>               
+                </div>
+                
                
             </div> 
         </section>
@@ -290,7 +296,7 @@
         <!-- Social links start -->
 
         <section class="social-links">
-            <div class="container text-center">
+            <div class="text-center">
                 <ul>
                     <li>
                         <a href="#"><img src="https://img.icons8.com/fluent/50/000000/facebook-new.png"/></a>
@@ -307,13 +313,16 @@
         <!-- social-limks end -->
         
         <section class="footer">
-            <div class="container text-center">
-                <p>All rights reserved, 2022. Developed By <a href="#">Birendra Jung Rai</a></p>
+            <div class="text-center">
+                <p>All rights reserved, 2022. Designed By <a href="#">Birendra Jung Rai</a></p>
             </div>
         </section>
         <!-- footer ends -->
+    <!-- </div> -->
         
 
 
 </body>
 </html>
+    
+       
