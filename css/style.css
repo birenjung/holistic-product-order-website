@@ -105,8 +105,7 @@ nav{
     display: flex;
     justify-content: space-around;
     background-color: white;
-    min-height: 120px;  
-    max-height: 110px;
+    height: 90px ;
     align-items: center;  
     /* background-color: #009BD6; */
 }
@@ -367,9 +366,7 @@ nav{
     transform: translateX(0%);
    } 
 
-   .logo{
-    width: 50%;
-   }
+  
 
 
 }
@@ -425,4 +422,10 @@ nav{
    nav{
     padding: 3%;
    }
+}
+
+@media only screen and (max-width:330px){
+    .logo{
+        width: 60%;
+    }
 }
