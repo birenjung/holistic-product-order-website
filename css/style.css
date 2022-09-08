@@ -20,6 +20,10 @@
     /* margin: 0 auto;     */
     /* overflow-x: hidden;
 } */ 
+
+.body{
+    /* overflow: hidden; */
+}
 .clearfix{    
     clear: both;
     float: none;
@@ -94,13 +98,18 @@ nav a{
     align-self: center;
     text-decoration: none;
 }
-.logo{
+/* .logo{
     text-transform: uppercase;
     align-self: center;
     letter-spacing: 2px;
     color: #34495e;
     width: 40%;
     
+} */
+
+
+.logo{
+    width: 40%;   
 }
 .logo img{
     width: 100%;
@@ -109,7 +118,10 @@ nav{
     display: flex;
     justify-content: space-around;
     background-color: white;
-    height: 90px;
+    min-height: 120px;  
+    max-height: 110px;
+    align-items: center;  
+    /* background-color: #009BD6; */
 }
 .nav-links{
     list-style: none;
@@ -117,9 +129,9 @@ nav{
     
     font-weight: bold;  
     display: flex;
-    justify-content: space-evenly; 
+    justify-content: space-around; 
     align-items: center; 
-    width: 60%;
+    width: 50%;
     /* background-color: #009BD6; */
 }
 .nav-links li a{
@@ -139,7 +151,7 @@ nav{
 .burger div{
     width: 25px;
     height: 4px;
-    margin: 5px;
+    margin-bottom: 5px;
     background-color: #001F2B; 
 }
 
@@ -323,11 +335,9 @@ nav{
 /* For Mobile */
 @media only screen and (max-width:900px){
 
-    body{
-        /* background-color: #001F2B; */
+    #content{
         overflow-x: hidden;
     }
-   
     .service-items{
         width: 45%;
         margin-bottom: 5%;
@@ -349,11 +359,15 @@ nav{
     .burger{
         display: block;   
     }
+    nav{
+        position: relative;
+        /* overflow: visible; */
+    }
     .nav-links{
         position: absolute;
         right: 0px;
         height: 80vh;
-        top: 8vh;
+        top: 90px;
         background-color: black;
         opacity: 0.9;
         display: flex;
@@ -365,7 +379,7 @@ nav{
         transition: transform 0.5s ease-in;        
     }
    .nav-links li {
-    opacity: 0;
+    /* opacity: 0; */
    }
    .nav-active{
     transform: translateX(0%);
@@ -375,6 +389,8 @@ nav{
 }
 
 @media only screen and (max-width:768px){
+
+    
     .service-items{
         width: 80%;
         margin-bottom: 5%;
