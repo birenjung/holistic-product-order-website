@@ -135,7 +135,7 @@ nav{
     cursor: pointer;
 }
 .burger div{
-    width: 25px;
+    width: 30px;
     height: 4px;
     margin-bottom: 5px;
     background-color: #001F2B; 
@@ -322,6 +322,7 @@ nav{
 @media only screen and (max-width:900px){
 
     #content{
+        
         overflow-x: hidden;
     }
     .service-items{
@@ -343,31 +344,33 @@ nav{
     }
     /* NAV */
     .burger{
-        display: block;   
+        display: block;  
+        /* position: fixed;  */
+        /* right: 10px; */
     }
-    
+    nav{
+        /* position: relative; */
+    }
     .nav-links{
         position: fixed;
         right: 0px;
-        height: 80vh;
-        top: 120px;
+        /* height: 80vh; */
+        height: 90vh;
+        top: 115px;
+        /* top: 1px ; */
         background-color: #ced6e0;
         opacity: 0.9;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-evenly;
-        width: 60%;
+        width: 80%;
         transform: translateX(100%);
         transition: transform 0.5s ease-in;        
+    } 
+    .nav-links li{
+        /* display: none; */
     }
-   
-   .nav-active{
-    transform: translateX(0%);
-   } 
-
-  
-
 
 }
 
@@ -393,11 +396,8 @@ nav{
     
     .search input[type="search"]{
         width: 90%;
-        padding: 1%;
-        font-size: rem;
-        /* border: none; */
-        /* border-radius: 5px; */
-        /* letter-spacing: ; */
+        padding: 2%;
+        font-size: rem;       
     }
     .btn{
         width: 88%;
@@ -428,4 +428,32 @@ nav{
     .logo{
         width: 60%;
     }
+}
+
+
+/* Toggle menu */
+.nav-active{
+    transform: translateX(0%);
+   } 
+
+@keyframes navLinkFade {
+    from{
+        opacity: 0;
+        transform: translateX(50px) ;
+        }
+    to{
+        opacity: 1;
+        transform: translateX(0px) ;
+    }
+    
+}
+
+.toggle .line1{
+    transform: rotate(-45deg) translate(-6px, 7px);
+}
+.toggle .line2{
+    opacity: 0;
+}
+.toggle .line3 {
+    transform: rotate(45deg) translate(-6px, -7px);
 }
