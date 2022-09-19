@@ -1,0 +1,156 @@
+/*  Author: Birendra Jung Rai
+    Theme : Product order system
+    Version: 1.0
+*/
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+a {
+    text-decoration: none;
+}
+.text-center{
+    text-align: center;
+}
+.text-right{
+    text-align: right;
+}
+.text-left{
+    text-align: left;
+}
+.container{
+    padding: 1%;
+    margin: 1%;
+}
+table tr th{
+    border-bottom: 1px groove black;
+    padding: 1%;
+    text-align: left;
+}
+
+table tr td{    
+    padding: 1%;
+    font-size: 0.90rem;    
+}
+
+table input{
+    padding: 1%;    
+}
+.tbl_30{
+    width: 30%;
+}
+.tbl_full{
+    width: 100%;
+}
+button{
+    cursor: pointer;
+    padding: 1%;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+.btn{
+    cursor: pointer;
+    padding: 1%;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+.btn-primary{
+    background-color: #1e90ff;
+}
+.btn-secondary{
+    background-color: #ffa502;
+}
+.btn-danger{
+    background-color: red;
+}
+.success{
+    color: green;
+}
+.error{
+    color: red;
+}
+.img-responsive{
+    width: 100%;
+    background-color: #1e90ff;
+}
+
+/* CSS for Forms */
+.tbl_30 input[type=text], input[type=password] {
+    width: 95%;
+    padding: 1%;
+}
+
+/* Nav */
+nav{
+    background-color: black;
+    padding: 5%;
+}
+
+.nav-links{
+    display: flex;
+    justify-content: space-evenly;
+    /* margin: 3%; */
+    list-style: none;  
+    width: 80%; 
+    font-weight: bold; 
+    
+}
+
+.nav-links li a{
+    text-decoration: none;
+    align-self: center;
+    color: antiquewhite;
+    
+}
+
+.nav-links li a:hover{
+    text-decoration: underline;
+    text-decoration-color: #ff4757;
+    text-decoration-thickness: 5px;
+}
+
+/* Content */
+#content {  
+   background-color: #dfe4ea;
+   padding: 5%;   
+}
+
+/* Footer */
+#footer{
+    background-color: black;
+    padding: 2%; 
+    color:antiquewhite;
+}
+
+/* Log in */
+
+
+.login{
+    display: flex;
+    border: 1px solid black;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    background-color: #4cd137   
+}
+
+.login-table{
+    padding: 2%;
+    width: 350px;
+}
+
+.login-table input[type=text], input[type=password] {
+    
+    padding: 5%;
+    width: 100%;
+    cursor: pointer;
+}
+ .login-table tr td{    
+    padding: 3%;
+ }
