@@ -1,3 +1,6 @@
+<?php 
+    include("config/constants.php") ;    
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
-<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 </head>
 <body id="content">
 
@@ -24,22 +27,17 @@
                             <a href="#">Login</a>
                         </li>
                         <li>
-                            <a href="<?php echo SITEURL; ?>cart.php">
+                            <a href="<?php echo SITEURL; ?>cart2.php">
 
                                 <?php
-                                        $res = mysqli_query($conn, 'SELECT * FROM tbl_cart') ;
-                                        $count = mysqli_num_rows($res) ;
-                                        if($count>0)
+                                        $product_num = 0 ;
+                                        if(isset($_SESSION['cart']))
                                         {
-                                            $count = $count ;
-                                        }
-                                        else
-                                        {
-                                            $count = 0 ;
+                                            $product_num = count($_SESSION['cart']) ;
                                         }
                                         
                                 ?>
-                                    Cart[<?php echo $count ; ?>]
+                                   My Cart[<?php echo $product_num ; ?>]
                             </a>
                         </li>
                     </ul>                
@@ -49,7 +47,7 @@
 
         <section class="nav-bar">
            
-                <nav>
+                <div class="menu">
                     <a href="">
                         <div class="logo">
                             <img src="img/logo.amp.png" alt="">
@@ -79,7 +77,7 @@
                             </li>
                         </ul>                      
                     
-                    </nav>
+                </div>
                            
           
             

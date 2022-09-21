@@ -177,11 +177,7 @@
                                         <h3 class="product-name"><?php echo $title ; ?></h3>
                                         <h4 class="price">Rs. <?php echo $price ; ?></h4>
 
-                                        <input type="number" name="quantity" value='1'>
-                                        <input type="hidden" name="image_name" value=<?php echo $image_name; ?>>
-                                        <input type="hidden" name="title" value=<?php echo $title; ?>>
-                                        <input type="hidden" name="price" value=<?php echo $price; ?>>
-                                        <input type="submit" name="submit" value='Add to cart' class="btn btn-primary">
+                                        
                             
                                     </form>                                               
                                                

@@ -1,4 +1,3 @@
-<?php include('config/constants.php'); ?>
 <?php include('partials-front/menu.php') ; ?>
         <!-- Search section starts -->
         <section class="search text-center">
@@ -18,8 +17,7 @@
             <h2 class="text-center">Products</h2>
             <div class="product-flex">
 
-                <?php
-
+                <?php  
                         $sql = "SELECT * FROM tbl_product WHERE active='Yes' " ;
 
                         $res = mysqli_query($conn, $sql) ;
@@ -54,13 +52,21 @@
                                            
                                             <h3 class="product-name"><?php echo $title ; ?></h3>
                                             <h4 class="price">Rs. <?php echo $price ; ?></h4>
-                                            <div class="cart btn btn-secondary">
-                                                <a href="cart" >Add to Cart</a>
+                                            <div class="cart">
+                                            <form action="manage_cart.php" method="POST">
+                                                <input type="hidden" name="id" value=<?php echo $id ;?>>
+                                                <input type="hidden" name="title" value=<?php echo $title ;?>>
+                                                <input type="hidden" name="price" value=<?php echo $price ;?>>
+                                                <input type="hidden" name="image_name" value=<?php echo $image_name ;?>>
+                                                <input type="submit" name="add_to_cart" value="Add to cart" class="btn btn-secondary">
+                                            </form>
+                                                
                                             </div>                        
                                         </a>
                                     </div>       
 
-                                <?php
+                                <?php                               
+                                
                             }
                         }
                         else
@@ -72,4 +78,5 @@
         </section>       
         <!-- featured-products end -->
 
+       
 <?php include('partials-front/footer.php') ; ?>

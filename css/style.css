@@ -95,7 +95,7 @@ h2{
 
 /* NAV BAR */
 
-nav a{
+.nav a{
     align-self: center;
     text-decoration: none;
 }
@@ -115,11 +115,11 @@ nav a{
 .logo img{
     width: 100%;
 }
-nav{
+.menu{
     display: flex;
     justify-content: space-around;
     background-color: white;
-    height: 90px ;
+    height: 80px ;
     align-items: center;  
     /* background-color: #009BD6; */
 }
@@ -363,39 +363,6 @@ nav{
     flex-direction: column;
 }
 
-/*  Shopping Cart */
-.shopping-cart{
-    width: 80%;
-    margin: 2% auto;
-}
-.tbl_full{
-    width: 1100px;
-    text-align: left;
-    margin: auto;
-}
-.tbl_full tr td{
-    /* width: 19%; */
-    padding: 1%;
-    color: #001F2B;
-}
-.tbl_full th{
-    background-color: #2ed573;
-    padding: 1%;
-    /* width: 19%;     */
-}
-.tbl_full th:first-child{
-    width: 5%;
-}
-.tbl_full input[type=number]{
-    width: 25%;
-}
-.qty-btn{
-    cursor: pointer;
-}
-.continue{
-    text-align: right;
-    margin: 1%;
-}
 
 /* Order */
 
@@ -522,7 +489,7 @@ fieldset{
    .float-text{
     left: 20%;
    }
-   nav{
+   .menu{
     padding: 3%;
    }
    .description{
