@@ -1,9 +1,8 @@
-<?php include("partials/menu.php") ?> ;
+<?php include("partials/menu.php"); ?> 
 
         <!-- content section starts -->
-        <section id="content">
+    <section id="content">
             <h2>Update Service Category</h2>
-            <br>
                     <?php
                             if(isset($_SESSION['remove']))
                             {
@@ -15,11 +14,21 @@
                                 echo $_SESSION['upload'] ;
                                 unset($_SESSION['upload']) ;
                             }
-                    ?>
-
-            <br>
+                            if(isset($_SESSION['too_large']))
+                            {
+                                echo $_SESSION['too_large'] ;
+                                unset($_SESSION['too_large']) ;
+                            }
+                            if(isset($_SESSION['format']))
+                            {
+                                echo $_SESSION['format'] ;
+                                unset($_SESSION['format']) ;
+                            }
+                    ?> 
+                    <br>           
             
-            <div class="container">
+        <div class="container">
+            <a href="<?php echo SITEURL; ?>admin/manage-s-category.php"><button class="btn btn-outline-dark">Back</button></a><br><br>
                 
             <?php
 
@@ -65,16 +74,14 @@
                 $res
             ?>
                    <form action="" method="POST" enctype="multipart/form-data">
-
-                        <table class="tbl_30">
-
+                   <div class="table-responsive">
+                        <table class="table table-borderless" style="width:450px;">
                             <tr>
                                 <td>Title:</td>
                                 <td>
-                                    <input type="text" name="title" value="<?php echo $title; ?>">
+                                    <input type="text" name="title" class="form-control" value="<?php echo $title; ?>">
                                 </td>
                             </tr>
-
                             <tr>
                                 <td>Current image:</td>
                                 <td>
@@ -93,24 +100,21 @@
                                       
                                 </td>
                             </tr>
-
                             <tr>                                
                                 <td>
-                                    Select image:
+                                    Upload new image:
                                 </td>
                                 <td>
-                                    <input type="file" name="image">
+                                    <input type="file" name="image" class="form-control">
                                 </td>
                             </tr>
-
                             <tr>
                                 <td>Featured:</td>
                                 <td>
                                     <input type="radio" name="featured" <?php if($featured=='Yes') {echo 'checked' ;} ?> value="Yes">Yes
                                     <input type="radio" name="featured" <?php if($featured=='No') {echo 'checked' ;} ?> value="No">No
                                 </td>
-                            </tr>    
-                            
+                            </tr>                          
                             <tr>
                                 <td>Active:</td>
                                 <td>
@@ -123,18 +127,17 @@
                                 <td colspan="2">
                                     <input type="hidden" name="id" value=<?php echo $id; ?>>
                                     <input type="hidden" name="" value=<?php echo $current_image; ?>>
-                                    <input type="submit" name="submit" value="Update Category" class="btn btn-secondary">
+                                    <input type="submit" name="submit" value="DONE" class="btn btn-secondary">
                                 </td>
                             </tr>
-                            
-
                         </table>
+                    </div>
                    </form>
 
                    <?php
                         if(isset($_POST['submit']))                        
                         {
-                            $title = $_POST['title'] ;
+                            $title = mysqli_escape_string($conn, $_POST['title']) ;
                             $featured = $_POST['featured'] ;
                             $active = $_POST['active'] ;
                         
@@ -142,53 +145,66 @@
                             // Upload image
                             if(isset($_FILES['image']['name']))
                             {
-                                $image_name = $_FILES['image']['name'] ;
-
-                                // Upload
-                                if($image_name != "")
+                                $image_name = $_FILES['image']['name'] ;                                
+                                if($_FILES['image']['size'] > 1000000)
                                 {
-                                    $ext = end(explode('.', $image_name)) ;
-
-                                    $date = time() ;
-
-                                    $image_name = "s_category_".$date.'.'.$ext;
-                                    
-                                    $source_path = $_FILES['image']['tmp_name'] ;
-
-                                    $destination_path = "../img/service-category/".$image_name ;
-
-                                
-                                
-                                    $upload = move_uploaded_file($source_path, $destination_path) ;
-
-                                    if($upload==FALSE)
+                                    $_SESSION['too_large'] = "<div class='error'>!! Sorry, your file is too large !!</div>" ;
+                                    header("location:".SITEURL."admin/update-s-category.php?id=$id") ;
+                                    die() ;
+                                }
+                                else
+                                {
+                                    if($image_name != "")
                                     {
-                                        $_SESSION['upload'] = "<div class='error'>!! Failed to Upload Image !!</div>" ;
-                                        header("location:".SITEURL."admin/update-s-category.php?id=$id") ;
-                                        die() ;
-                                    }
-
-                                        $remove_path = "../img/service-category/".$current_image ;
-    
-                                        if($current_image != "")
+                                        $ext = end(explode('.', $image_name)) ;
+                                        $allowed_ext = array('jpg','jpeg','png');
+                                        if(in_array($ext, $allowed_ext))
                                         {
-                                            $remove = unlink($remove_path) ;
+                                            $date = time() ;
     
-                                            if($remove==FALSE)
+                                            $image_name = "s_category_".$date.'.'.$ext;
+                                            
+                                            $source_path = $_FILES['image']['tmp_name'] ;
+        
+                                            $destination_path = "../img/service-category/".$image_name ;                                
+                                        
+                                            $upload = move_uploaded_file($source_path, $destination_path) ;
+        
+                                            if($upload==FALSE)
                                             {
-                                                $_SESSION['remove'] = "<div class='error'>!! Failed to Remove Image !!</div>" ;
+                                                $_SESSION['upload'] = "<div class='error'>!! Failed to Upload Image !!</div>" ;
                                                 header("location:".SITEURL."admin/update-s-category.php?id=$id") ;
                                                 die() ;
                                             }
-                                        }
-                                
-                                }  
-                                else
-                                {
-                                    //if there is no any image to upload, 
-                                    $image_name = $current_image ;
-                                }                        
-
+        
+                                                $remove_path = "../img/service-category/".$current_image ;
+            
+                                                if($current_image != "")
+                                                {
+                                                    $remove = unlink($remove_path) ;
+            
+                                                    if($remove==FALSE)
+                                                    {
+                                                        $_SESSION['remove'] = "<div class='error'>!! Failed to Remove Image !!</div>" ;
+                                                        header("location:".SITEURL."admin/update-s-category.php?id=$id") ;
+                                                        die() ;
+                                                    }
+                                                }
+                                        } 
+                                        else
+                                        {
+                                            $_SESSION['format'] = "<div class='error'>!! You can't upload files of this type !!</div>" ;
+                                            header("location:".SITEURL."admin/update-s-category.php?id=$id") ;
+                                            die() ;
+                                        }                           
+                                    }  
+                                    else
+                                    {
+                                        //if there is no any image to upload, 
+                                        $image_name = $current_image ;
+                                    }                        
+    
+                                }                                                                
                             }
                             else
                             {
@@ -222,11 +238,10 @@
                         }
                         
                    ?>
-            </div>
-        </section>
+        </div>
+    </section>
         <!-- content section ends -->
 
-
- <?php include("partials/footer.php") ?> ;
+ <?php include("partials/footer.php"); ?> 
 
        

@@ -8,16 +8,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Log In</title>
         <link rel="stylesheet" href="../css/admin.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     </head>
     <body>
-            <div class="content">
-                <div class="login">
-
-                    <h2 class="text-center">LOG IN</h2>  <br><br>
-
+            <div class="container-fluid bg-dark d-flex flex-column justify-content-center align-items-center" style="height:100vh;">
+                    
                     <?php
                            if(isset($_SESSION['login']))
-                           {
+                           { 
                                 echo $_SESSION['login'] ;
                                 unset($_SESSION['login']) ;
                            }
@@ -27,33 +25,35 @@
                                 unset($_SESSION['no-login-msg']) ;
                            }
                     ?>
-
-                    <form action="" method="POST">
-                        <table class="login-table">
+                    
+                <form method="POST">
+                    <div class="table-responsive bg-info p-4 mb-4 rounded">   
+                        <h3 class="text-center mb-3">Log In</h3>                     
+                        <table class="table table-borderless" style="width:350px">
                             <tr>
                                 <td>Username:</td>
                                 <td>
-                                    <input type="text" name="username" placeholder="Enter your username">
+                                    <input type="text" name="username" class="form-control" placeholder="Enter your username" required>
                                 </td>
                                 
                             </tr>
                             <tr>
                                 <td>Password:</td>
                                 <td>
-                                    <input type="password" name="password" placeholder="Enter your password">
+                                    <input type="password" name="password" class="form-control" placeholder="Enter your password" required>
                                 </td> 
                                             
                             </tr>
                             <tr>
                                 <td colspan="2" class="text-center">
-                                    <input type="submit" name="submit" value="Log in" class="btn btn-primary">
+                                    <input type="submit" name="submit" value="Log in" class=" form-control btn btn-primary">
                                 </td>
                             </tr>
                         </table>
-                    </form>
-                    <br>
-                    <br>
-                    <p class="text-center">Created by <a href="">Birendra Jung Rai</a></p>
+                    </div>
+                </form>                 
+                    
+                    <p class="text-center text-white">Created by <a href="" style="text-decoration:none; color:purple;">Birendra Jung Rai</a></p>
                 </div>
             </div>
 

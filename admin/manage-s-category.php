@@ -1,12 +1,7 @@
-<?php include("partials/menu.php") ?> ;
-
-
-
+<?php include("partials/menu.php"); ?> 
         <!-- content section starts -->
         <section id="content">
             <h2>Manage Service Categories</h2>
-            <br>
-
             <?php
                     if(isset($_SESSION['add']))
                     { 
@@ -39,11 +34,12 @@
                         unset($_SESSION['delete']) ;
                     }
             ?>
-            <br>
-            <div class="container">
-                <a href="<?php echo SITEURL; ?>admin/add-s-category.php"><button class="btn-primary">Add Service Category</button></a>                
-
-            <table class="tbl_full text-left">
+            <br>            
+            <div class="container-fluid">
+                <a href="<?php echo SITEURL; ?>admin/add-s-category.php"><button class="btn btn-outline-primary">ADD SERVICE CATEGORY</button></a>                
+                <div class="table-responsive">
+                    <table class="table table-bordered mt-2">
+                        <thead class="table-light">
                         <tr>
                             <th>SN</th>
                             <th>Title</th>
@@ -52,6 +48,7 @@
                             <th>Active</th>
                             <th>Actions</th>
                         </tr>
+                        </thead>
                         
                         <?php
 
@@ -78,7 +75,7 @@
                                         $active = $row['active'] ;
 
                                         ?>
-
+                                        <tbody>
                                             <tr>
                                                 <td><?php echo $sn++ ; ?></td>
                                                 <td><?php echo $title ; ?></td>
@@ -102,8 +99,8 @@
                                                 <td><?php echo $active ; ?></td>
                                                 
                                                 <td>
-                                                    <a href="<?php echo SITEURL ;?>admin/update-s-category.php?id=<?php echo $id; ?>"><button class="btn-secondary">Update</button></a>
-                                                    <a href="<?php echo SITEURL ;?>admin/delete-s-category.php?id=<?php echo $id; ?>&image_name=<?php echo $image_name; ?>"><button class="btn-danger">Delete</button></a>
+                                                    <a href="<?php echo SITEURL ;?>admin/update-s-category.php?id=<?php echo $id; ?>"><button class="btn btn-sm btn-outline-secondary">UPDATE <i class="fa-sharp fa-solid fa-pen"></i></button></a>
+                                                    <a href="<?php echo SITEURL ;?>admin/delete-s-category.php?id=<?php echo $id; ?>&image_name=<?php echo $image_name; ?>"><button class="btn btn-sm btn-outline-danger">DELETE <i class="fa-solid fa-trash"></i></button></a>
                                                 </td>
                                                 
                                             </tr>
@@ -120,6 +117,7 @@
                                                 !! No Categories Available !!
                                                 </td>
                                             </tr>
+                                            </tbody>
                                     <?php
                                 }
                             }
@@ -131,11 +129,10 @@
                         
                         
                     </table>
+                </div>
             </div>
         </section>
         <!-- content section ends -->
-
-
- <?php include("partials/footer.php") ?> ;
+ <?php include("partials/footer.php"); ?> 
 
        

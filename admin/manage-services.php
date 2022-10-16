@@ -1,11 +1,8 @@
-<?php include("partials/menu.php") ?> ;
-
-
+<?php include("partials/menu.php"); ?> 
 
         <!-- content section starts -->
         <section id="content">
-            <h2>Manage Services</h2>
-            <br>
+            <h2>Manage Services</h2>           
 
             <?php
                     if(isset($_SESSION['add']))
@@ -42,9 +39,11 @@
             ?>
             <br>
 
-            <div class="container">
-                <a href="<?php echo SITEURL; ?>admin/add-service.php"><button class="btn-primary">Add Service</button></a> 
-                    <table class="tbl_full text-left">
+            <div class="container-fluid">
+                <a href="<?php echo SITEURL; ?>admin/add-service.php"><button class="btn btn-outline-primary">Add Service</button></a> 
+                <div class="table-responsive">
+                    <table class="table table-bordered mt-2">
+                        <thead class="table-light">
                         <tr>
                             <th>SN</th>
                             <th>Title</th>
@@ -56,6 +55,7 @@
                             <th>Active</th>
                             <th>Actions</th>
                         </tr>
+                        </thead>
 
                         <?php
 
@@ -81,7 +81,7 @@
                                     $active = $row['active'] ;
 
                                     ?>
-
+                                        <tbody>
                                         <tr>
                                             <td><?php echo $sn++ ;?></td>
                                             <td><?php echo $title ; ?></td>
@@ -101,12 +101,20 @@
                                                       }
                                                 ?>
                                             </td>
-                                            <td><?php echo $category ; ?></td>
+                                            <td>
+                                                <?php 
+                                                     $sql2 = "SELECT * FROM tbl_s_category WHERE sc_id=$category";
+                                                     $res2 = mysqli_query($conn, $sql2);
+                                                     $row2 = mysqli_fetch_assoc($res2);
+                                                     $category = $row2['sc_title'];
+                                                     echo $category;
+                                                ?>
+                                            </td>
                                             <td><?php echo $featured ; ?></td>
                                             <td><?php echo $active ; ?></td>
                                             <td>
-                                                <a href="<?php echo SITEURL ; ?>admin/update-service.php?id=<?php echo $id ; ?>"><button class="btn-secondary">Update</button></a>
-                                                <a href="<?php echo SITEURL ; ?>admin/delete-service.php?id=<?php echo $id ; ?>&image=<?php echo $image_name ;?>"><button class="btn-danger">Delete</button></a>
+                                                <a href="<?php echo SITEURL ; ?>admin/update-service.php?id=<?php echo $id ; ?>"><button class="btn btn-sm btn-outline-secondary">UPDATE <i class="fa-sharp fa-solid fa-pen"></i></button></a>
+                                                <a href="<?php echo SITEURL ; ?>admin/delete-service.php?id=<?php echo $id ; ?>&image=<?php echo $image_name ;?>"><button class="btn btn-sm btn-outline-danger">DELETE <i class="fa-solid fa-trash"></i></button></a>
                                             </td>
                                         </tr>
 
@@ -127,13 +135,12 @@
                        
                         
                         
-                        
+                       </tbody>
                     </table>
             </div>
         </section>
         <!-- content section ends -->
-
-
- <?php include("partials/footer.php") ?> ;
+        
+ <?php include("partials/footer.php"); ?> 
 
        

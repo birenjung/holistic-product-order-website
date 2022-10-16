@@ -1,12 +1,9 @@
-<?php include("partials/menu.php") ?> ;
-
-
+<?php include("partials/menu.php"); ?> 
 
         <!-- content section starts -->
         <section id="content">
             <h2>Manage Admin</h2>
-
-                <br>
+                
                 <?php
                     if(isset($_SESSION['add']))
                     {
@@ -42,16 +39,19 @@
                 ?>
                 <br>
 
-            <div class="container">
-                <a href="<?php echo SITEURL ; ?>admin/add-admin.php"><button class="btn-primary">Add Admin</button></a> 
-                    <table class="tbl_full text-left">
+            <div class="container-fluid">
+                <a href="<?php echo SITEURL ; ?>admin/add-admin.php"><button class="btn btn-outline-primary">ADD ADMIN</button></a> 
+                <div class="table-responsive">
+                    <table class="table table-responsive table-bordered mt-2">
+                        <thead class="table-light rounded">
                         <tr>
                             <th>SN</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
+                            <th>Firstname</th>
+                            <th>Lastname</th>
                             <th>Username</th>
                             <th>Actions</th>
                         </tr>
+                        </thead>
 
                         <?php
                                 // Get data from Databse
@@ -76,15 +76,15 @@
                                             $username = $row['username'] ;
                                         
 
-                                        ?>
+                                        ?>  <tbody>
                                             <tr>
                                                 <td><?php echo $sn++ ; ?></td>
                                                 <td><?php echo $first_name ; ?></td>
                                                 <td><?php echo $last_name ; ?></td>
                                                 <td><?php echo $username ; ?></td>
                                                 <td>
-                                                    <a href="<?php echo SITEURL ;?>admin/update-admin.php?id=<?php echo $id; ?>"><button class="btn-secondary">Update</button></a>
-                                                    <a href="<?php echo SITEURL ;?>admin/delete-admin.php?id=<?php echo $id; ?>"><button class="btn-danger">Delete</button></a>
+                                                    <a href="<?php echo SITEURL ;?>admin/update-admin.php?id=<?php echo $id; ?>"><button class="btn btn-sm btn-outline-secondary">UPDATE <i class="fa-sharp fa-solid fa-pen"></i></button></a>
+                                                    <a href="<?php echo SITEURL ;?>admin/delete-admin.php?id=<?php echo $id; ?>"><button class="btn btn-sm btn-outline-danger">DELETE <i class="fa-solid fa-trash"></i></button></a>
                                                 </td>
                                             </tr>
                                         <?php
@@ -98,19 +98,20 @@
                                             <tr>
                                                 <td colspan="5" class="error text-center">!! No Admin Added Yet !!</td>
                                             </tr>
+                                        </tbody>
                                         <?php
                                     }
                                 }
 
                                 
-                        ?>
-  
+                        ?>  
                     </table>
+                </div>
             </div>
         </section>
         <!-- content section ends -->
 
 
- <?php include("partials/footer.php") ?> ;
+ <?php include("partials/footer.php"); ?> 
 
        

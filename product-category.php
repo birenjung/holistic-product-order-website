@@ -34,8 +34,9 @@
          <!-- Featured products start -->
 
          <section class="featured-products">
-            <h2 class="text-center"> Featured Products</h2>
-            <div class="product-flex">
+            <h2 class="text-center"> Products on "<i><?php echo $title ; ?></i>"</h2>
+            <div class="container">
+                <div class="row mt-5">
 
                 <?php
                         $sql2 = "SELECT * FROM tbl_product WHERE category_id = $category_id AND active='Yes' " ;
@@ -48,37 +49,49 @@
                         {
                             while($row2=mysqli_fetch_assoc($res2))
                             {
-                                $product_id = $row2['id'] ;
+                                $id = $row2['id'] ;
                                 $title = $row2['title'] ;
-                                $price = $row2['price'] ;
                                 $description = $row2['description'] ;
+                                $price = $row2['price'] ;
                                 $image_name = $row2['image_name'] ;
 
                                 ?>
-                                    <div class="product-items">
-                                        <a href="">
-                                            <?php
-                                                
-                                                if($image_name != "")
-                                                {
-                                                    ?>
-                                                        <img src="img/products/<?php echo $image_name ; ?>">
+                                    <div class="product-flex col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                            <div class="thumbnail">
+                                                <a href="<?php echo SITEURL ; ?>description.php?id=<?php echo $id ; ?>">
                                                     <?php
-                                                }
-                                                else
-                                                {
-                                                    echo "<div class='error text-center'>No image available</div>" ;
-                                                }
-                                            ?>
-                                            
-                                            <h3 class="product-name"><?php echo $title ; ?></h3>
-                                            <h4 class="price">Rs. <?php echo $price ; ?></h4>
-                                            <div class="cart btn btn-secondary">
-                                                <a href="cart" >Add to Cart</a>
-                                            </div>                        
-                                        </a>
-                                    </div>    
-                                <?php
+                                                            if($image_name != '')
+                                                            {
+                                                                ?>
+                                                                        <img src="img/products/<?php echo $image_name ?>">
+                                                                <?php
+                                                            }
+                                                            else
+                                                            {
+                                                                echo "<div class='error text-center'>No image available</div>" ;
+                                                            }
+                                                    ?>
+                                                </a>
+                                                
+                                                <div class="caption text-center">
+                                                    <h5 class="product-name"><?php echo $title ; ?></h5>
+                                                    <div class="price text-center">
+                                                        Rs. <?php echo $price ;?>
+                                                    </div>   
+                                                    
+                                                        <form action="manage_cart.php" method="POST">
+                                                            <input type="hidden" name="id" value=<?php echo $id ;?>>
+                                                            <input type="hidden" name="title" value=<?php echo $title ;?>>
+                                                            <input type="hidden" name="price" value=<?php echo $price ;?>>
+                                                            <input type="hidden" name="image_name" value=<?php echo $image_name ;?>>
+                                                            <button type="submit" name="add_to_cart" class="btn btn-success text-center">Add <i class="fa-solid fa-cart-plus"></i></button>   
+                                                        </form>                                                
+                                                </div>                      
+                                            </div>
+                                        </div>       
+
+                                    <?php                               
+                                    
                             }
                         }
                         else
