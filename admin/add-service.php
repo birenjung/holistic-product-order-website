@@ -121,7 +121,9 @@
             if(isset($_POST['submit']))
             {
                 $title = mysqli_escape_string($conn, $_POST['title']) ;
+                $title = trim($title); 
                 $description = mysqli_escape_string($conn, $_POST['description']) ;
+                $description = trim($description); 
                 $price = $_POST['price'] ;
                 $category_id = $_POST['category_id'] ;
 

@@ -2,7 +2,22 @@
 
 <section id="content">
 
-    <h2>Update Admin</h2><br>
+    <h2>Update Admin</h2>
+    
+        <?php
+                if(isset($_SESSION['invalid_pwd']))
+                {
+                    echo $_SESSION['invalid_pwd'];
+                    unset($_SESSION['invalid_pwd']);
+                }
+                if(isset($_SESSION['username_taken']))
+                {
+                    echo $_SESSION['username_taken'];
+                    unset($_SESSION['username_taken']);
+                }
+        ?>
+    
+    <br>
 
     <div class="container">
         <a href="<?php echo SITEURL; ?>admin/manage-admin.php"><button class="btn btn-outline-dark">Back</button></a><br><br>
@@ -64,6 +79,7 @@
                     <td>Username:</td>
                     <td>
                         <input type="text" name="username" class="form-control" value="<?php echo $username ; ?>">
+                        <div class="form-text">When updated, username must be changed.</div>
                     </td>
                 </tr>
                 <tr>
@@ -86,31 +102,70 @@
             {
                // echo "clicked";
                         $first_name = mysqli_real_escape_string($conn, $_POST['first_name']) ;
+                        $first_name = trim($first_name);
                         $last_name = mysqli_real_escape_string($conn, $_POST['last_name'])  ;
+                        $last_name = trim($last_name);
                         $username = mysqli_real_escape_string($conn, $_POST['username'])  ;
-                        $password = mysqli_real_escape_string($conn, md5($_POST['password'])) ;
+                        $username = trim($username);
+                        $password = $_POST['password'];
 
-                        $sql2 = "UPDATE tbl_admin SET
-                                first_name = '$first_name',
-                                last_name = '$last_name',
-                                username = '$username',
-                                password = '$password'
+                        // Validate password strength
+                        $uppercase = preg_match('@[A-Z]@', $password);
+                        $lowercase = preg_match('@[a-z]@', $password);
+                        $number    = preg_match('@[0-9]@', $password);
+                        $specialChars = preg_match('@[^\w]@', $password);
 
-                                WHERE id = $admin_id;
-                        " ;
 
-                        $res2 = mysqli_query($conn, $sql2) ;
-
-                        if($res==true)
+                        $sql = "SELECT username FROM tbl_admin";
+                        $res = mysqli_query($conn, $sql);
+                        /* associative array */
+                        $row = mysqli_fetch_all($res, MYSQLI_ASSOC);
+                        
+                        foreach($row as $key => $value)
                         {
-                            $_SESSION['update'] = "<div class='success'>!! Admin Updated Successfully !!</div>" ;
-                            header("location:".SITEURL."admin/manage-admin.php") ;
+                            $username_list = array_column($row, 'username');
+                           
+                        }                        
+                        if(in_array($username, $username_list))
+                        {
+                            $_SESSION['username_taken'] = "<div class='error'>!! Username is taken. Try with another one. !!</div>";
+                            header("location:".SITEURL."admin/update-admin.php?id=$admin_id");
+                            die();
+                           
                         }
                         else
                         {
-                            $_SESSION['update'] = "<div class='error'>!! Failed to Update Admin !!</div>" ;
-                            header("location:".SITEURL."admin/manage-admin.php") ;
-                        }
+                            if(strlen($password) < 8 || !$number || !$uppercase || !$lowercase || !$specialChars) {
+                                $_SESSION['invalid_pwd'] = "<div class='error'> Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character.</div>";
+                                header("location:".SITEURL."admin/update-admin.php?id=$admin_id");
+                                die();
+                            }
+                            else
+                            {
+                                $new_pwd = password_hash("$password", PASSWORD_DEFAULT);   
+                                $sql2 = "UPDATE tbl_admin SET
+                                    first_name = '$first_name',
+                                    last_name = '$last_name',
+                                    username = '$username',
+                                    password = '$new_pwd'
+    
+                                    WHERE id = $admin_id;
+                            " ;
+                            }                        
+    
+                            $res2 = mysqli_query($conn, $sql2) ;
+    
+                            if($res==true)
+                            {
+                                $_SESSION['update'] = "<div class='success'>!! Admin Updated Successfully !!</div>" ;
+                                header("location:".SITEURL."admin/manage-admin.php") ;
+                            }
+                            else
+                            {
+                                $_SESSION['update'] = "<div class='error'>!! Failed to Update Admin !!</div>" ;
+                                header("location:".SITEURL."admin/manage-admin.php") ;
+                            }
+                        }                
             }
         ?>
 

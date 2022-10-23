@@ -82,7 +82,7 @@
                         <!-- <input type="text" name="title" class="form-control" value = <?php echo $title; ?>> -->
                        
                         <label class="form-label"><?php echo $title; ?></label>
-                        <input type="text" class="form-control" name="title" placeholder="Type a new title" required>
+                        <input type="text" class="form-control" name="title" value="<?php echo $title; ?>" required>
                     </td>
                 </tr>
                 <tr>
@@ -173,7 +173,9 @@
                 if(isset($_POST['submit']))
                 {
                     $title = mysqli_escape_string($conn, $_POST['title']) ;
+                    $title = trim($title);
                     $description = mysqli_escape_string($conn, $_POST['description']) ;
+                    $description = trim($description);
                     $price = $_POST['price'] ;
                     $featured = $_POST['featured'] ;
                     $active = $_POST['active'] ;

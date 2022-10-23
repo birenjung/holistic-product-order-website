@@ -91,4 +91,11 @@ $(document).ready(function(){
         scrollbar: true
     });
    
+    $("#jq-filter").on("keyup", function(){
+        let value = $(this).val().toLowerCase();
+        $("#a_table tr").filter(function(){
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)            
+        });
+    });  
+    
 });

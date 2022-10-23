@@ -79,6 +79,7 @@
                             <tr>
                                 <td>Title:</td>
                                 <td>
+                                    <label class="form-label"><?php echo $title; ?></label>
                                     <input type="text" name="title" class="form-control" value="<?php echo $title; ?>">
                                 </td>
                             </tr>
@@ -138,6 +139,7 @@
                         if(isset($_POST['submit']))                        
                         {
                             $title = mysqli_escape_string($conn, $_POST['title']) ;
+                            $title = trim($title);
                             $featured = $_POST['featured'] ;
                             $active = $_POST['active'] ;
                         

@@ -26,8 +26,12 @@
         ?>
     <br>
     <div class="container">
+                <div class="jq-filter">
+                    <input type="text" id="jq-filter" class="form-control" placeholder="Search">
+                </div>
+                <div class="clear-fix"></div>
         <div class="table-responsive">
-            <table class="table table-bordered mt-2">
+            <table class="table table-bordered mt-2" id="a_table">
                 <thead class="table-light">
                 <tr>
                     <th>SN</th>
@@ -62,7 +66,7 @@
                                             <td>
                                                 <?php 
                                                     $status = $row['status'];
-                                                    if($status=="ordered")
+                                                    if($status=="Ordered")
                                                     {
                                                         echo "<label>Ordered</label>";
                                                     }

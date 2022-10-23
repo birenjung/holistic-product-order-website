@@ -15,13 +15,15 @@
         <!-- Services section starts -->
         <section class="services mt-5 border-bottom">
         <h2 class="text-center">Services</h2>
-        <?php
-                if(isset($_SESSION['book']))
-                {
-                    echo $_SESSION['book'];
-                    unset($_SESSION['book']);
-                }
-        ?>
+            <div class="container">
+                        <?php
+                            if(isset($_SESSION['book']))
+                            {
+                                echo $_SESSION['book'];
+                                unset($_SESSION['book']);
+                            }
+                        ?>
+            </div>
             <div class="container">
                 <div class="row">
 

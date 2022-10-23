@@ -24,6 +24,12 @@
                                 echo $_SESSION['no-login-msg'] ;
                                 unset($_SESSION['no-login-msg']) ;
                            }
+                           if(isset($_SESSION['no_username']))
+                           {
+                                echo $_SESSION['no_username'] ;
+                                unset($_SESSION['no_username']) ;
+                           }
+
                     ?>
                     
                 <form method="POST">
@@ -49,6 +55,44 @@
                                     <input type="submit" name="submit" value="Log in" class=" form-control btn btn-primary">
                                 </td>
                             </tr>
+                            <tr>
+                                <td colspan="2" class="text-center">
+                                    <a href="<?php echo SITEURL; ?>admin/forgot-password.php" style="text-decoration:none; font-size:12px;" data-bs-toggle="modal" data-bs-target="#forgot_pwd">Forgot Password</a>
+                                                                                               
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="forgot_pwd" tabindex="-1" aria-labelledby="a<?php echo $id; ?>Label" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                 Forgot Password
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form>
+                                                        <div class="mb-3">
+                                                            <label for="exampleInputEmail1" class="form-label">Email address</label>
+                                                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="exampleInputPassword1" class="form-label">Password</label>
+                                                            <input type="password" class="form-control" id="exampleInputPassword1">
+                                                        </div>
+                                                        <div class="mb-3 form-check">
+                                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                                                        </div>
+                                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                                    </form>                                                                            
+                                                </div> 
+                                                <div class="modal-footer">                                                                                
+                                                    <a href="<?php echo SITEURL ;?>admin/delete-admin.php?id=<?php echo $id; ?>"><button class="btn btn-sm btn-outline-danger">CONFIRM</i></button></a>
+                                                    <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                </div>                                                                          
+                                            </div>
+                                        </div>
+                                    </div> 
+                                </td>
+                            </tr>
                         </table>
                     </div>
                 </form>                 
@@ -62,10 +106,12 @@
                 if(isset($_POST['submit']))
                 {
                     $username = mysqli_real_escape_string($conn, $_POST['username']) ;
+                    $username = trim($username);
 
-                    $password = mysqli_real_escape_string($conn, md5($_POST['password'])) ;
+                    $password = mysqli_real_escape_string($conn, $_POST['password']) ;              
+                
 
-                    $sql = "SELECT * FROM tbl_admin WHERE username = '$username' AND password = '$password' " ;
+                    $sql = "SELECT * FROM tbl_admin WHERE username = '$username'" ;
 
                     $res = mysqli_query($conn, $sql) ;
 
@@ -73,22 +119,29 @@
 
                     $count = mysqli_num_rows($res) ;
 
-                    if($count==1)                   
-                    {
-                        $_SESSION['login'] = "<div class='success'>!! Logged In Successfully !! </div>" ;               
-                        
+                    if($count==1)
+                    {                                              
+                            $row=mysqli_fetch_assoc($res);                     
+                            $hash = $row['password'];
+                            if(password_verify("$password", $hash))
+                            {
+                                $_SESSION['login'] = "<div class='success'>!! Logged In Successfully !! </div>" ; 
+                                header("location:".SITEURL."admin/") ;
+                                $_SESSION['username'] = "$username" ;
+                                header("location:".SITEURL."admin/") ;       
 
-                        header("location:".SITEURL."admin/") ;
-
-                        $_SESSION['username'] = "$username" ;
-                        header("location:".SITEURL."admin/") ;
-
+                            }
+                            else
+                            {
+                                $_SESSION['login'] = "<div class='error'>!! Username and password do not match !! </div>" ;
+                                header("location:".SITEURL."admin/login.php") ; 
+                            }                        
                     }
                     else
                     {
-                        $_SESSION['login'] = "<div class='error'>!! Username and password do not match !! </div>" ;
+                        $_SESSION['no_username'] = "<div class='error'>!! Username does not exist !! </div>" ;
                         header("location:".SITEURL."admin/login.php") ;
-                    }
+                    }                    
                 }
             ?>
     </body>

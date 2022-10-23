@@ -17,7 +17,7 @@
                {
                     $count = count($_SESSION['cart']);
                     $_SESSION['cart'][$count]= array("product_title" => $product_title, "product_price" => $price, "qty" => 1) ;
-                    echo "<div class='text-success' style='font-size:0.9rem;'>Added to cart.  Number of products in cart now = ".count($_SESSION['cart'])."</div>";
+                    echo "<div class='text-dark' style='font-size:0.9rem;'>Added to cart.  Number of products in cart now = ".count($_SESSION['cart'])."</div>";
     
                }              
              
@@ -26,7 +26,7 @@
             {
             
                 $_SESSION['cart'][0]= array("product_title" => $product_title, "product_price" => $price, "qty" => 1) ;
-                echo "<div class='text-success' style='font-size:0.9rem;'>Added to cart.  Number of products in cart now = ".count($_SESSION['cart'])."</div>";
+                echo "<div class='text-dark' style='font-size:0.9rem;'>Added to cart.  Number of products in cart now = ".count($_SESSION['cart'])."</div>";
            
             }
     }   

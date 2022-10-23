@@ -1,13 +1,16 @@
-<?php include('partials-front/menu.php') ; 
+<?php include('partials-front/menu.php') ;?>
 
+    <div class="container">
+        <?php
+            if(isset($_SESSION['invalid_ph']))
+            {
+                echo $_SESSION['invalid_ph'];
+                unset($_SESSION['invalid_ph']);
+            }
+        ?>
+    </div>
 
-        if(isset($_SESSION['invalid_ph']))
-        {
-            echo $_SESSION['invalid_ph'];
-            unset($_SESSION['invalid_ph']);
-        }
-
-        ?><br><?php
+        <br><?php
     
 
     if(isset($_GET['id']))
@@ -57,8 +60,11 @@
                                 if(isset($_POST['submit'])) 
                                 {                                   
                                     $c_name = mysqli_real_escape_string( $conn, $_POST['c_name']);
+                                    $c_name = trim($c_name);
                                     $address = mysqli_real_escape_string( $conn, $_POST['address']);
+                                    $address = trim($address);
                                     $phone = $_POST['phone'];
+                                    $phone = trim($phone);
                                     $booked_date = $_POST['booked_date'];
                                     $title = mysqli_real_escape_string( $conn, $_POST['title']);
                                     $price = $_POST['price'];
@@ -67,20 +73,10 @@
                                     $given_time = 'SET TIME';
                                     $_SESSION['id'] = $id;
 
-                                    function validating($cPhone){
-                                        if(preg_match('/^[0-9]{10}+$/', $cPhone)) 
-                                        {                
-                                        }
-                                        else{
-                                            
-                                            $_SESSION['invalid_ph'] = "<div class='text-danger text-center bg-dark p-2'>!! Please enter valid phone number and try again !!</div>";                    
-                                            header("location:".SITEURL."booking.php?id=".$_SESSION['id']);                                                              
-                                            die();
-                                        }
-                                    }
-                                    validating($phone);
-
-                                    $sql = "INSERT INTO tbl_booking SET
+                                    
+                                        if(preg_match('/^[0-9]{10}+$/', $phone)) 
+                                        {   
+                                            $sql = "INSERT INTO tbl_booking SET
                                             c_name = '$c_name',
                                             address = '$address',
                                             phone = '$phone',
@@ -91,15 +87,37 @@
                                             status = '$status',
                                             date = '$date'                 
                                             
-                                    ";
-                                
-                                $res = mysqli_query($conn, $sql);
+                                            ";
+                                        
+                                            $res = mysqli_query($conn, $sql);
 
-                                if($res==TRUE)
-                                {
-                                        $_SESSION['book'] = "<div class='text-success text-center bg-dark p-2'>!! You have successfully booked a date. !!</div>";
-                                        header('location:'.SITEURL.'services.php');
-                                }
+                                            if($res==TRUE)
+                                            {                                                   
+                                                    $_SESSION['book'] = '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                                                    <strong>Thank you!</strong> You have successfully booked a date.
+                                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                    </div>';
+                                                    header('location:'.SITEURL.'services.php');
+                                            }
+                                            else
+                                            {
+                                                    $_SESSION['book'] = '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                                    <strong>Sorry!</strong> Failed to book a date.
+                                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                    </div>';
+                                                    header('location:'.SITEURL.'services.php');
+                                            }             
+                                        }
+                                        else
+                                        {
+                                                                                    
+                                            $_SESSION['invalid_ph'] = '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                            <strong>Sorry!</strong> Please enter valid phone number and try again.
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                            </div>';                  
+                                            header("location:".SITEURL."booking.php?id=".$_SESSION['id']);                                                              
+                                            die();
+                                        }                              
                                 }
         }
         else

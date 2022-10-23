@@ -100,8 +100,10 @@
             {
                // echo "clicked";
                         $full_name = mysqli_real_escape_string($conn, $_POST['full_name']) ;
-                        $address = mysqli_real_escape_string($conn, $_POST['address'])  ;
-                        $phone_num = mysqli_real_escape_string($conn, $_POST['phone_num'])  ;
+                        $full_name = trim($full_name);
+                        $address = mysqli_real_escape_string($conn, $_POST['address']) ;
+                        $address = trim($address);
+                        $phone_num = mysqli_real_escape_string($conn, $_POST['phone_num']) ;
                         $email = mysqli_real_escape_string($conn, $_POST['email']) ;
                         $status = $_POST['status'];
 

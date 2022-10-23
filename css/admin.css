@@ -33,7 +33,10 @@ a {
 .tbl_30{
     width: 30%;
 }
-
+.clear-fix{
+    float: none;
+    clear: both;
+}
 /* CSS for Forms */
 
 
@@ -57,6 +60,12 @@ a {
     color:antiquewhite;
 }
 
-/* Log in */
+/* filter */
+.add_button{
+    float: left;
+}
+.jq-filter{
+    float: right;
+}
 
 

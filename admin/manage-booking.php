@@ -22,8 +22,12 @@
                 ?>
             <br>
             <div class="container">
+                <div class="jq-filter">
+                    <input type="text" id="jq-filter" class="form-control" placeholder="Search">
+                </div>
+                <div class="clear-fix"></div>
                 <div class="table-responsive">
-                    <table class="table table-bordered mt-2">
+                    <table class="table table-bordered mt-2" id="a_table">
                         <thead>
                             <tr>
                             <th>SN</th>

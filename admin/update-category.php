@@ -140,6 +140,7 @@
                             if(isset($_POST['submit']))                        
                             {
                                 $title = mysqli_escape_string($conn, $_POST['title']) ;
+                                $title = trim($title);
                                 $featured = $_POST['featured'] ;
                                 $active = $_POST['active'] ;
                                 

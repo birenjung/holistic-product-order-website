@@ -25,7 +25,7 @@ h2{
 
 .header{
     background-color: #1b2241; 
-    padding: 0.5% ;
+    padding: 3px;
     letter-spacing: 1px;
 }
 
@@ -39,7 +39,7 @@ h2{
 
 }
 
-.header-links ul li a{
+.header-links a{
     text-decoration: none;
     color: beige;
     font-size: 12px;
@@ -48,59 +48,30 @@ h2{
     color: red;
 }
 
-
-/* NAV BAR */
-
-.nav a{
-    align-self: center;
-    text-decoration: none;
-}
-.logo{
-    width: 40%;   
-}
-.logo img{
-    width: 100%;
-}
-.menu{
+/* nav */
+.navbar-nav{
+    width: 100%;   
     display: flex;
-    justify-content: space-around;
-    background-color: white;
-    height: 80px ;
-    align-items: center;  
+    justify-content: end;
 }
-.nav-links{
-    list-style: none;
-    font-weight: bold;  
-    display: flex;
-    justify-content: space-around; 
-    align-items: center; 
-    width: 50%;    
+.nav-item{    
+    margin-right: 3%;
 }
-.nav-links li a{
-    text-decoration: none; 
-    color: #de2d21;
+.nav-item a {
+    color:#d63031;
+    font-weight:500;
 }
-.nav-links li a:hover{
-    color: #001F2B;
-    text-decoration: underline #ff4757;
-    text-decoration-thickness: 4px;
+.nav-item a:hover{ 
+    color:#e84393;  
+   
 }
-.burger{
-    align-self: center;   
-    display: none;
-    cursor: pointer;
+.nav-item a:active{
+    text-decoration: underline #001F2B;
 }
-.burger div{
-    width: 30px;
-    height: 4px;
-    margin-bottom: 5px;
-    background-color: #001F2B; 
-}
-
 /* search section */
 .search{
     background-image: url(../img/bg/bg5.jpg);    
-    padding: 8% 0;
+    padding: 7% 0;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: contain;
@@ -154,8 +125,7 @@ h2{
 .text-bg{
     background-color:  #001F2B;
     padding: 2%;
-    border-radius: 3px;
-    opacity: 0.85;
+    border-radius: 3px;    
     letter-spacing: 1px;
     font-size: 1rem;    
 }

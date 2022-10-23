@@ -17,12 +17,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/ad2db55012.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- for logo -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
 </head>
 <body id="content">
         <section class="header">              
                 <div class="header-links text-center">
-                    <ul>                        
-                        <li>
+                    
                             <a href="<?php echo SITEURL; ?>cart.php">
 
                                 <?php
@@ -34,50 +35,37 @@
                                 ?>
                                    My Cart <i class="fa-solid fa-cart-shopping"></i> <span id="pnum" class="bg-danger rounded p-1"><?php echo $product_num ;?></span>
                             </a>
-                        </li>                       
-                    </ul>                
+                                    
                 </div>        
         </section>
         <!-- header link section ends-->
-
-        <section class="nav-bar">
-           
-                <div class="menu">
-                    <a href="">
-                        <div class="logo">
-                            <img src="img/logo/logo.amp.png" alt="">
-                        </div>
-                    </a> 
-                    
-                    <div class="burger">
-                        <div class="line1"></div>
-                        <div class="line2"></div>
-                        <div class="line3"></div>
-                    </div>
-                       <ul class="nav-links">
-                            <li>
-                                <a href="<?php echo SITEURL ; ?>index.php">Home</a>
-                            </li>
-                            <li>
-                                <a href="<?php echo SITEURL ; ?>aboutus.php">About Us</a>
-                            </li>
-                            <li>
-                                <a href="<?php echo SITEURL ; ?>services.php">Services</a>
-                            </li>
-                            <li>
-                                <a href="<?php echo SITEURL ; ?>products.php">Products</a>
-                            </li>                        
-                            <li>
-                                <a href="<?php echo SITEURL ; ?>contact.php">Contact</a>
-                            </li>
-                        </ul>                      
-                    
-                </div>
-                           
-          
-            
-
-        
-
-        </section>
-        <!-- nav bar ends -->
+    <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#" style=" font-family: 'Oswald', sans-serif; font-size: 1.5rem; letter-spacing: 1px; color:#636e72">
+            Herbs <i class="fa-solid fa-leaf"></i>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="<?php echo SITEURL ; ?>index.php">Home</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="<?php echo SITEURL ; ?>aboutus.php">About Us</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="<?php echo SITEURL ; ?>services.php">Services</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="<?php echo SITEURL ; ?>products.php">Products</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="<?php echo SITEURL ; ?>contact.php">Contact Us</a> 
+            </li>           
+        </ul>        
+        </div>
+    </div>
+    </nav>
+            <!-- nav bar ends -->

@@ -9,8 +9,7 @@
                 echo $_SESSION['login'];
                 unset($_SESSION['login']);
             }
-    ?>
-    <br>
+    ?>    
     <div class="container-fluid mt-5">
         <div class="row">
             <div class="col-lg-3 p-3 me-4 mb-5 bg-info rounded text-center text-white">
@@ -32,19 +31,8 @@
                         echo mysqli_num_rows($res);
                 ?>
                 </h4>
-            </div>
-            <div class="col-lg-3 p-3 me-4 mb-5 bg-info rounded text-center text-white">
-                <h4>Products</h4>
-                <h4>
-                <?php
-                        $sql = "SELECT * FROM tbl_product";
-                        $res = mysqli_query($conn, $sql);
-                        echo mysqli_num_rows($res);
-                ?>
-                </h4>
-            </div>
+            </div>            
         </div>
-
         <div class="row">
             <div class="col-lg-3 p-3 me-4 mb-5 bg-info rounded text-center text-white">
                 <h4>Services</h4>
@@ -65,17 +53,7 @@
                         echo mysqli_num_rows($res);
                 ?>
                 </h4>
-            </div>
-            <div class="col-lg-3 p-3 me-4 mb-5 bg-info rounded text-center text-white">
-                <h4>Bookings</h4>
-                <h4>
-                <?php
-                        $sql = "SELECT * FROM tbl_booking";
-                        $res = mysqli_query($conn, $sql);
-                        echo mysqli_num_rows($res);
-                ?>
-                </h4>
-            </div>
+            </div>           
         </div>
         <div class="row">
             <div class="col-lg-3 p-3 me-4 mb-5 bg-info rounded text-center text-white">
@@ -86,6 +64,16 @@
                             $res = mysqli_query($conn, $sql);
                             echo mysqli_num_rows($res);
                     ?>
+                </h4>
+            </div>
+            <div class="col-lg-3 p-3 me-4 mb-5 bg-info rounded text-center text-white">
+                <h4>Bookings</h4>
+                <h4>
+                <?php
+                        $sql = "SELECT * FROM tbl_booking";
+                        $res = mysqli_query($conn, $sql);
+                        echo mysqli_num_rows($res);
+                ?>
                 </h4>
             </div>
             <div class="col-lg-3 p-3 me-4 mb-5 bg-info rounded text-center text-white">

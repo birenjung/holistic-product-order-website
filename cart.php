@@ -1,6 +1,6 @@
 <?php include('partials-front/menu.php'); ?>
         
-<div class="container mb-5 px-4 py-3" style="background-color: #f7f7f5; border-radius:1px;"> 
+<div class="container my-5 px-4 py-3" style="background-color: #f7f7f5; border-radius:1px;"> 
     <div class="row justify-content-center">
         <div class="col-4">
             <h2 class="text-center mb-4 py-1 mt-2 rounded-bottom">My Cart <i class="fa-solid fa-cart-shopping"></i></h2>
@@ -56,6 +56,9 @@
                                                                         <div class="modal-dialog">
                                                                             <div class="modal-content">
                                                                                 <div class="modal-header">
+                                                                                    Confirmation
+                                                                                </div>
+                                                                                <div class="modal-header">
                                                                                     <span >
                                                                                         Are you sure to remove <?php echo $value['product_title'] ; ?> ?
                                                                                     </span>                                                                                    
@@ -66,7 +69,7 @@
                                                                                 </div>                                                                          
                                                                             </div>
                                                                         </div>
-                                                                    </div> 
+                                                                    </div>  
                                             </form>
                                         </td>                                       
                                     
