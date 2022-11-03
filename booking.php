@@ -23,11 +23,11 @@
         {
             $row = mysqli_fetch_assoc($res);
             ?>
-                    <div class="container-fluid bg-light p-4 mb-5">
+                    <div class="container-fluid p-4 mt--2 mb-5">
                         <div class="container d-flex flex-column align-items-center">
                             <h3 class="mb-4 text-success">Booking for <?php echo $row['title'];  ?></h3>
                             
-                            <form style="width:320px;" method="POST" class="booking p-3">
+                            <form style="width:350px;" method="POST" class="booking p-3">
                                 <div class="mb-3">
                                     <label class="form-label">Full Name</label>
                                     <input type="text" class="form-control" name="c_name" placeholder="E.g. Manrani Rai" required>                                

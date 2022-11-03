@@ -42,6 +42,7 @@
                                 ?>
                                         <tr>
                                             <td><?php echo $sn++; ?></td>
+                                            
                                             <td><?php echo $row['product_name']; ?></td>
                                         
                                             <td><?php echo $row['price']; ?></td>
@@ -57,7 +58,10 @@
                         }
                         else
                         {
-                            $_SESSION['no_customer'] = "<div class='error'>!! Invalid Id !!</div>" ;
+                            $_SESSION['no_customer'] = '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Sorry!</strong> Invalid Id
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>' ;
                             header("location:".SITEURL."admin/manage-order.php") ;
                         }
                 ?>   
@@ -72,8 +76,11 @@
                 }
                 else
                 {
-                $_SESSION['unautho'] = "<div class='error'>!! Unauthorized Access !!</div>" ;
-                header("location:".SITEURL."admin/manage-order.php") ;
+                    $_SESSION['unautho'] = '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Sorry!</strong> Unauthorized Access
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>' ;
+                    header("location:".SITEURL."admin/manage-order.php") ;
                 }    
                 ?>
             </table>

@@ -20,7 +20,7 @@
     <!-- for logo -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
 </head>
-<body id="content">
+<body>
         <section class="header">              
                 <div class="header-links text-center">
                     

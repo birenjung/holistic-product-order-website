@@ -2,7 +2,8 @@
         <!-- content section starts -->
 <section id="content">
     <h2>Manage Orders</h2>
-        <?php
+    <div class="container">
+            <?php
                 if(isset($_SESSION['no-user']))
                 {
                     echo $_SESSION['no-user'];
@@ -23,8 +24,9 @@
                     echo $_SESSION['no_customer'];
                     unset($_SESSION['no_customer']);
                 }
-        ?>
-    <br>
+            ?>
+    </div>       
+    
     <div class="container">
                 <div class="jq-filter">
                     <input type="text" id="jq-filter" class="form-control" placeholder="Search">

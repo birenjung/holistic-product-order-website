@@ -11,8 +11,8 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     </head>
     <body>
-            <div class="container-fluid bg-dark d-flex flex-column justify-content-center align-items-center" style="height:100vh;">
-                    
+            <div class="container-fluid bg-light d-flex flex-column justify-content-center align-items-center" style="height:100vh;">
+                <div class="container text-center mb-2">    
                     <?php
                            if(isset($_SESSION['login']))
                            { 
@@ -29,13 +29,13 @@
                                 echo $_SESSION['no_username'] ;
                                 unset($_SESSION['no_username']) ;
                            }
-
-                    ?>
+                        ?>
+                    </div>
                     
                 <form method="POST">
-                    <div class="table-responsive bg-info p-4 mb-4 rounded">   
+                    <div class="table-responsive bg-info p-4 mb-4 rounded" style="color:#222f3e">   
                         <h3 class="text-center mb-3">Log In</h3>                     
-                        <table class="table table-borderless" style="width:350px">
+                        <table class="table table-borderless" style="width:350px; color:#222f3e;">
                             <tr>
                                 <td>Username:</td>
                                 <td>
@@ -97,7 +97,7 @@
                     </div>
                 </form>                 
                     
-                    <p class="text-center text-white">Created by <a href="" style="text-decoration:none; color:purple;">Birendra Jung Rai</a></p>
+                    <p class="text-center text-dark">Created by <a href="" style="text-decoration:none">Birendra Jung Rai</a></p>
                 </div>
             </div>
 
@@ -125,7 +125,9 @@
                             $hash = $row['password'];
                             if(password_verify("$password", $hash))
                             {
-                                $_SESSION['login'] = "<div class='success'>!! Logged In Successfully !! </div>" ; 
+                                $_SESSION['login'] = '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <strong>Logged In Successfully</strong><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                                </button></div>'; 
                                 header("location:".SITEURL."admin/") ;
                                 $_SESSION['username'] = "$username" ;
                                 header("location:".SITEURL."admin/") ;       

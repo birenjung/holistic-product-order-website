@@ -82,14 +82,12 @@
                                 $active = $row['active'] ;
 
                                 ?>
-                                    <tbody>
+                                    <tbody id="tbody">
                                     <tr>
                                         <td><?php echo $sn++ ; ?></td>
                                         <td><?php echo $title ; ?></td>
-                                        <td>
-                                            
-                                            <?php 
-                                            
+                                        <td>                                            
+                                            <?php                                             
                                             if($image_name == "")
                                             {
                                                 echo "<div class='error'>No Image Added</div>" ;

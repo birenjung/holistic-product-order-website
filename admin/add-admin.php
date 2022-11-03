@@ -88,15 +88,21 @@
                         }                        
                         if(in_array($username, $username_list))
                         {
-                            $_SESSION['username_taken'] = "<div class='error'>!! Username is taken. Try with another one. !!</div>";
+                            $_SESSION['username_taken'] = '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Sorry!</strong> Username is taken. Please, try with another one.
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>';
                             header("location:".SITEURL."admin/add-admin.php");
                             die();
-                           
+                            
                         }
                         else
                         {
                             if(strlen($password) < 8 || !$number || !$uppercase || !$lowercase || !$specialChars) {
-                                $_SESSION['invalid_pwd'] = "<div class='error'> Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character.</div>";
+                                $_SESSION['invalid_pwd'] = '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong>Sorry!</strong> Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character.
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>';
                                 header("location:".SITEURL."admin/add-admin.php");
                                 die();
                             }
@@ -117,12 +123,18 @@
                                 $res = mysqli_query($conn, $sql);   
                                 if($res==TRUE)
                                 {
-                                    $_SESSION['add'] = "<div class='success'>!! Admin Added Successfully !!</div>" ;
+                                    $_SESSION['add'] = '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                                     Admin Added Successfully.
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>' ;
                                     header("location:".SITEURL."admin/manage-admin.php") ;
                                 }
                                 else
                                 {
-                                    $_SESSION['add'] = "<div class='error'>!! Failed to Add Admin !!</div>" ;
+                                    $_SESSION['add'] = '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <strong>Sorry!</strong> Failed to Add Admin.
+                                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                   </div>' ;
                                     header("location:".SITEURL."admin/manage-admin.php") ;
                                 }                            
                         }                    

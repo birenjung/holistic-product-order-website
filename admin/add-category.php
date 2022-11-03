@@ -100,7 +100,10 @@
                             $image_name = $_FILES['image']['name'] ;
                             if($_FILES['image']['size'] > 1000000)
                             {
-                                $_SESSION['too_large'] = "<div class='error'>!! Sorry, your file is too large !!</div>" ;
+                                $_SESSION['too_large'] = '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong>Sorry!</strong> Your file is too large.
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>' ;
                                 header("location:".SITEURL."admin/add-category.php") ;
                                 die() ;
                             }
@@ -120,14 +123,20 @@
                                         $upload = move_uploaded_file($source_path, $destination_path) ;    
                                         if($upload==FALSE)
                                         {                                        
-                                            $_SESSION['upload'] = "<div class='error'>!! Failed to Upload Image !!</div>" ;
+                                            $_SESSION['upload'] = '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                            <strong>Sorry!</strong> Failed to Upload Image.
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                            </div>' ;
                                             header("location:".SITEURL."admin/add-category.php") ;
                                             die() ;
                                         }
                                     }
                                     else
                                     {
-                                        $_SESSION['format'] = "<div class='error'>!! You can't upload files of this type !!</div>" ;
+                                        $_SESSION['format'] = '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        <strong>Sorry!</strong> You cannot upload files of this type.
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                        </div>' ;
                                         header("location:".SITEURL."admin/add-category.php") ;
                                         die() ;
                                     }                            
@@ -153,12 +162,18 @@
 
                             if($res==TRUE)
                             {
-                                $_SESSION['add'] = "<div class='success'>!! Category Added Successfully !!</div>" ;
+                                $_SESSION['add'] = '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                                Category Added Successfully.
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>' ;
                                 header("location:".SITEURL."admin/manage-category.php") ;
                             }
                             else
                             {
-                                $_SESSION['add'] = "<div class='error'>!! Failed to Add Category !!</div>" ;
+                                $_SESSION['add'] = '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong>Sorry!</strong>  Failed to Add Category.
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>' ;
                                 header("location:".SITEURL."admin/manage-category.php") ;
                         
                             }

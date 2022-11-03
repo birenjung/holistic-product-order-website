@@ -33,7 +33,10 @@
                 else
                 {
                     // Validation
-                    $_SESSION['no-user'] = "<div class='error'>!! No User Available !!</div>" ;
+                    $_SESSION['no-user'] = '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Sorry!</strong> No User Available
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>' ;
                     header("location:".SITEURL."admin/manage-order.php") ;
                 }
 
@@ -41,7 +44,10 @@
             }
             else
             {
-                $_SESSION['unautho'] = "<div class='error'>!! Unauthorized Access !!</div>" ;
+                $_SESSION['unautho'] = '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Sorry!</strong> Unauthorized Access
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>';
                 header("location:".SITEURL."admin/manage-order.php") ;
             }
         ?>
@@ -121,12 +127,18 @@
 
                         if($res==true)
                         {
-                            $_SESSION['update'] = "<div class='success'>!! Admin Updated Successfully !!</div>" ;
+                            $_SESSION['update'] = '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                             Admin Updated Successfully
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>';
                             header("location:".SITEURL."admin/manage-order.php") ;
                         }
                         else
                         {
-                            $_SESSION['update'] = "<div class='error'>!! Failed to Update Admin !!</div>" ;
+                            $_SESSION['update'] = '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>Sorry!</strong> Failed to Update Admin
+                           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                           </div>' ;
                             header("location:".SITEURL."admin/manage-order.php") ;
                         }
             }

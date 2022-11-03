@@ -1,17 +1,14 @@
 <?php include('partials-front/menu.php') ; ?>
-
         <!-- Search section starts -->
         <section class="search text-center">
-           <div class="container-fluid" >         
-                <form class="d-flex justify-content-center flex-wrap" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search for services and products" aria-label="Search">
-                    <button class="btn btn-primary responsive-search-btn" type="submit" name="search">Search</button>
-                </form>       
-           </div>
-
+                <div class="container-fluid" >         
+                        <form class="d-flex justify-content-center flex-wrap" action="<?php echo SITEURL; ?>search.php" method="GET">
+                            <input class="form-control" type="search" name="search" placeholder="Search for services and products">
+                            <input class="btn btn-primary responsive-search-btn" type="submit" name="submit" value="Search">                   
+                        </form>       
+                </div>
         </section>
-        <!-- Search section ends -->      
-
+        <!-- Search section ends --> 
         <!-- Services section starts -->
         <section class="services mt-5 border-bottom">
         <h2 class="text-center">Services</h2>
@@ -46,7 +43,7 @@
                                 ?>
                                     <div class="product-flex col-lg-4 col-md-6 col-sm-12">
                                             <div class="thumbnail">
-                                                <a href="<?php echo SITEURL ; ?>description.php?id=<?php echo $id ; ?>">
+                                                <a href="<?php echo SITEURL ; ?>service-description.php?id=<?php echo $id ; ?>">
                                                     <?php
                                                             if($image_name != '')
                                                             {

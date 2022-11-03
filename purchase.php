@@ -41,7 +41,6 @@
                                 price = ?,
                                 quantity = ?,
                                 total = ?,
-                                pay_mode =?,
                                 status = ?
                                 ";            
                         
@@ -49,7 +48,7 @@
         
                         if($stmt == true)            
                         {
-                            mysqli_stmt_bind_param($stmt, "isdiiss", $customer_id, $p_name, $p_price, $p_quantity, $total, $payMode, $status) ;
+                            mysqli_stmt_bind_param($stmt, "isdiis", $customer_id, $p_name, $p_price, $p_quantity, $total, $status) ;
                             foreach($_SESSION['cart'] as $key => $value)
                             {
                                 $p_name = $value['product_title'] ;

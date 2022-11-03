@@ -47,7 +47,7 @@
                                 <td>
                                     <select name="status" class="form-select">
                                         <option value="Booked" <?php if($row['status']=="Booked"){echo "selected";} ?>>Booked</option>
-                                        <option value="Complete" <?php if($row['status']=="Complete"){echo "selected";} ?>>Complete</option>
+                                        <option value="Complete" <?php if($row['status']=="Complete"){echo "selected";} ?>>Completed</option>
                                         <option value="Cancelled" <?php if($row['status']=="Cancelled"){echo "selected";} ?>>Cancelled</option>                                        
                                     </select>
                                 </td>

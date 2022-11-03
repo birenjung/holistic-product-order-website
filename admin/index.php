@@ -3,13 +3,15 @@
 <!-- content section starts -->
 <section id="content">
     <h2>Dashboard</h2>
+    <div class="container">
     <?php
             if(isset($_SESSION['login']))
             {
                 echo $_SESSION['login'];
                 unset($_SESSION['login']);
             }
-    ?>    
+    ?>  
+    </div>  
     <div class="container-fluid mt-5">
         <div class="row">
             <div class="col-lg-3 p-3 me-4 mb-5 bg-info rounded text-center text-white">
@@ -79,12 +81,12 @@
             <div class="col-lg-3 p-3 me-4 mb-5 bg-info rounded text-center text-white">
                 <h4>Revenue</h4>
                 <?php                    
-                    $sql = "SELECT SUM(total) AS TOTAL FROM user_order WHERE status = 'Delivered'";
-                    $res = mysqli_query($conn, $sql);
+                    $sql3 = "SELECT SUM(grand_total) AS TOTAL FROM tbl_order_manager WHERE status = 'Delivered'";
+                    $res3 = mysqli_query($conn, $sql3);
                     if($res==true)
                     {
-                        $row = mysqli_fetch_assoc($res);
-                        $revenue = $row['TOTAL'];
+                        $row3=mysqli_fetch_assoc($res3);                   
+                        $revenue = $row3['TOTAL'];
                     }
                     if(!isset($revenue))
                     {

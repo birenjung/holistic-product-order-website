@@ -1,13 +1,12 @@
 <?php include("partials-front/menu.php"); ?>
- <!-- Search section starts -->
- <section class="search text-center">
+<!-- Search section starts -->
+<section class="search text-center">
            <div class="container-fluid" >         
-                <form class="d-flex justify-content-center flex-wrap" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search for services and products" aria-label="Search">
-                    <button class="btn btn-primary responsive-search-btn" type="submit" name="search">Search</button>
+                <form class="d-flex justify-content-center flex-wrap" action="<?php echo SITEURL; ?>search.php" method="GET">
+                    <input class="form-control" type="search" name="search" placeholder="Search for services and products">
+                    <input class="btn btn-primary responsive-search-btn" type="submit" name="submit" value="Search">                   
                 </form>       
            </div>
-
 </section>
 <!-- Search section ends -->        
         
